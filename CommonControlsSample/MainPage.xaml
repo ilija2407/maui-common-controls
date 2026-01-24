@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CommonControlsSample.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:be="clr-namespace:BorderlessEntry.Maui.Controls;assembly=BorderlessEntry.Maui">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="185"
+                SemanticProperties.Description="dot net bot in a race car number eight"
+                Source="dotnet_bot.png" />
+
+            <Label
+                FontSize="32"
+                HorizontalOptions="Center"
+                SemanticProperties.HeadingLevel="Level1"
+                Text="Hello, World!" />
+
+            <Label
+                FontSize="18"
+                HorizontalOptions="Center"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                SemanticProperties.HeadingLevel="Level2"
+                Text="Welcome to .NET Multi-platform App UI" />
+
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="Happy to announce my first Nuget Package - BorderlessEntry.Maui" />
+
+            <be:BorderlessEntry Placeholder="Checkout my borderless entry" />
+			
+            <Entry Placeholder="This is regular entry" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
