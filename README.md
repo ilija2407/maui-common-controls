@@ -11,3 +11,6 @@ The goal is to make it easy to achieve a clean, borderless text input across pla
 Package: `BorderlessEntry.Maui`
 
 https://www.nuget.org/packages/BorderlessEntry.Maui/
+
+<img width="1033" height="606" alt="image" src="https://github.com/user-attachments/assets/93dddf7b-f9e2-4a89-9754-c02a954ad175" />
+
