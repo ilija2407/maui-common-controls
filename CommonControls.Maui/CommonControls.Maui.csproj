@@ -34,6 +34,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<MauiImage Include="Resources\Images\*" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 

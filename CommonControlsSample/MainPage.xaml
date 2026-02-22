@@ -36,9 +36,26 @@
 
             <Entry Placeholder="This is regular entry" />
 
-            <be:BorderlessEditor Placeholder="Checkout my borderless editor" HeightRequest="100" />
+            <be:BorderlessEditor HeightRequest="40" Placeholder="Checkout my borderless editor" />
 
-            <Editor Placeholder="This is regular editor" HeightRequest="100" />
+            <Editor HeightRequest="40" Placeholder="This is regular editor" />
+
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="PasswordEntry with show/hide toggle" />
+
+            <Entry IsPassword="True" Placeholder="This is regular entry with IsPassword" />
+
+            <be:PasswordEntry Placeholder="Enter your password" />
+
+            <be:PasswordEntry
+                HidePasswordImageSource="custom_hide.png"
+                ImageHeight="25"
+                ImageWidth="25"
+                Placeholder="Custom icons password"
+                ShowPasswordImageSource="custom_show.png" />
         </VerticalStackLayout>
     </ScrollView>
 
