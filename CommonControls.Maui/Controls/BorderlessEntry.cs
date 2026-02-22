@@ -1,4 +1,4 @@
-namespace BorderlessEntry.Maui.Controls;
+namespace CommonControls.Maui.Controls;
 
 public class BorderlessEntry : Entry
 {

@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="BorderlessEntry.Maui/BorderlessEntry.Maui.csproj" />
+  <Project Path="CommonControls.Maui/CommonControls.Maui.csproj" />
   <Project Path="CommonControlsSample/CommonControlsSample.csproj">
     <Deploy Solution="Debug|*" />
   </Project>

@@ -3,7 +3,7 @@
     x:Class="CommonControlsSample.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:be="clr-namespace:BorderlessEntry.Maui.Controls;assembly=BorderlessEntry.Maui">
+    xmlns:be="clr-namespace:CommonControls.Maui.Controls;assembly=CommonControls.Maui">
 
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">
@@ -30,11 +30,15 @@
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
-                Text="Happy to announce my first Nuget Package - BorderlessEntry.Maui" />
+                Text="Common Controls - BorderlessEntry &amp; BorderlessEditor" />
 
             <be:BorderlessEntry Placeholder="Checkout my borderless entry" />
-			
+
             <Entry Placeholder="This is regular entry" />
+
+            <be:BorderlessEditor Placeholder="Checkout my borderless editor" HeightRequest="100" />
+
+            <Editor Placeholder="This is regular editor" HeightRequest="100" />
         </VerticalStackLayout>
     </ScrollView>
 

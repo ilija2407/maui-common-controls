@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using BorderlessEntry.Maui.Hosting;
+using Microsoft.Extensions.Logging;
+using CommonControls.Maui.Hosting;
 
 namespace CommonControlsSample
 {
@@ -10,7 +10,7 @@ namespace CommonControlsSample
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseBorderlessEntry()
+                .UseCommonControls()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

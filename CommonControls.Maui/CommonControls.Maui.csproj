@@ -13,11 +13,11 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<PackageId>BorderlessEntry.Maui</PackageId>
-		<Version>1.0.2</Version>
+		<PackageId>CommonControls.Maui</PackageId>
+		<Version>1.0.1</Version>
 		<Authors>Ilija Rushkovski</Authors>
-		<Description>Borderless Entry control for .NET MAUI with Android/iOS handler mappings.</Description>
-		<PackageTags>maui;entry;handler;android;ios;borderless</PackageTags>
+		<Description>Common borderless controls for .NET MAUI (Entry, Editor) with Android/iOS handler mappings.</Description>
+		<PackageTags>maui;entry;editor;handler;android;ios;borderless;controls</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryUrl>https://github.com/ilija2407/maui-common-controls</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
