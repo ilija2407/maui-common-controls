@@ -2,6 +2,34 @@ namespace CommonControls.Maui.Controls;
 
 public class PasswordEntry : ContentView
 {
+    private const string EyeResourceName = "CommonControls.Maui.Resources.Images.cc_eye.png";
+    private const string HiddenResourceName = "CommonControls.Maui.Resources.Images.cc_hidden.png";
+
+    private static byte[]? _eyeBytes;
+    private static byte[]? _hiddenBytes;
+
+    private static ImageSource CreateDefaultShowIcon()
+    {
+        _eyeBytes ??= LoadEmbeddedBytes(EyeResourceName);
+        return ImageSource.FromStream(() => new MemoryStream(_eyeBytes));
+    }
+
+    private static ImageSource CreateDefaultHideIcon()
+    {
+        _hiddenBytes ??= LoadEmbeddedBytes(HiddenResourceName);
+        return ImageSource.FromStream(() => new MemoryStream(_hiddenBytes));
+    }
+
+    private static byte[] LoadEmbeddedBytes(string resourceName)
+    {
+        var assembly = typeof(PasswordEntry).Assembly;
+        using var stream = assembly.GetManifestResourceStream(resourceName);
+        if (stream is null) return [];
+        using var ms = new MemoryStream();
+        stream.CopyTo(ms);
+        return ms.ToArray();
+    }
+
     public static readonly BindableProperty TextProperty =
         BindableProperty.Create(nameof(Text), typeof(string), typeof(PasswordEntry), default(string), BindingMode.TwoWay);
 
@@ -37,9 +65,6 @@ public class PasswordEntry : ContentView
     public static readonly BindableProperty PlaceholderColorProperty =
         BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(PasswordEntry));
 
-    private const string DefaultShowIcon = "cc_eye.png";
-    private const string DefaultHideIcon = "cc_hidden.png";
-
     private readonly BorderlessEntry _entry;
     private readonly ImageButton _toggleImageButton;
 
@@ -60,7 +85,7 @@ public class PasswordEntry : ContentView
 
         _toggleImageButton = new ImageButton
         {
-            Source = DefaultShowIcon,
+            Source = CreateDefaultShowIcon(),
             VerticalOptions = LayoutOptions.Center,
             HorizontalOptions = LayoutOptions.End,
             BackgroundColor = Colors.Transparent,
@@ -186,7 +211,7 @@ public class PasswordEntry : ContentView
     private void UpdateToggleIcon()
     {
         _toggleImageButton.Source = IsPassword
-            ? (ShowPasswordImageSource ?? DefaultShowIcon)
-            : (HidePasswordImageSource ?? DefaultHideIcon);
+            ? (ShowPasswordImageSource ?? CreateDefaultShowIcon())
+            : (HidePasswordImageSource ?? CreateDefaultHideIcon());
     }
 }

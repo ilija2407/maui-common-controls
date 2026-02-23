@@ -14,7 +14,7 @@
 		<Nullable>enable</Nullable>
 
 		<PackageId>CommonControls.Maui</PackageId>
-		<Version>1.0.2</Version>
+		<Version>1.0.4</Version>
 		<Authors>Ilija Rushkovski</Authors>
 		<Description>Common borderless controls for .NET MAUI (Entry, Editor, PasswordEntry) with Android/iOS handler mappings.</Description>
 		<PackageTags>maui;entry;editor;password;handler;android;ios;borderless;controls</PackageTags>
@@ -34,7 +34,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<MauiImage Include="Resources\Images\*" />
+		<EmbeddedResource Include="Resources\Images\cc_eye.png" />
+		<EmbeddedResource Include="Resources\Images\cc_hidden.png" />
 	</ItemGroup>
 
 	<ItemGroup>
