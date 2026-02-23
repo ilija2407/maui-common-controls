@@ -1,6 +1,12 @@
 # CommonControls.Maui
 
-`CommonControls.Maui` is a small .NET MAUI library that provides borderless controls (`Entry`, `Editor`) without the default platform border/underline styling.
+`CommonControls.Maui` is a small .NET MAUI library that provides borderless controls (`Entry`, `Editor`, `PasswordEntry`) without the default platform border/underline styling.
+
+## Controls
+
+- **BorderlessEntry** — `Entry` without platform border/underline
+- **BorderlessEditor** — `Editor` without platform border/underline
+- **PasswordEntry** — Password input with built-in show/hide toggle icon (customizable)
 
 ## Intention
 
