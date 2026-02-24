@@ -18,5 +18,6 @@ Package: `CommonControls.Maui`
 
 https://www.nuget.org/packages/CommonControls.Maui/
 
+![CustomControlsLinkedinPost](https://github.com/user-attachments/assets/b8507b3a-948f-4e98-9148-a16f6b2244f9)
 <img width="1033" height="606" alt="image" src="https://github.com/user-attachments/assets/93dddf7b-f9e2-4a89-9754-c02a954ad175" />
 
