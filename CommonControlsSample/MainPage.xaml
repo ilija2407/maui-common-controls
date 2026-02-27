@@ -56,6 +56,58 @@
                 ImageWidth="25"
                 Placeholder="Custom icons password"
                 ShowPasswordImageSource="custom_show.png" />
+
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="ValidationEntry" />
+
+            <customControls:ValidationEntry Keyboard="Numeric" Placeholder="No border (default)" />
+
+            <customControls:ValidationEntry
+                x:Name="EmailEntryNoSeparator"
+                BorderColor="Gray"
+                ErrorMessage="Please enter a valid email"
+                ErrorSeparatorColor="Red"
+                IsValid="False"
+                Placeholder="Email - no border, separator only"
+                SeparatorVisible="False" />
+
+            <customControls:ValidationEntry
+                x:Name="EmailEntry"
+                ErrorMessage="Please enter a valid email"
+                ErrorSeparatorColor="Red"
+                IsValid="False"
+                Placeholder="Email - no border, separator only"
+                SeparatorVisible="True" />
+
+            <customControls:ValidationEntry
+                BorderColor="Gray"
+                BorderVisible="True"
+                ErrorBorderColor="Gray"
+                ErrorMessage="This field is required"
+                ErrorSeparatorColor="Red"
+                IsValid="False"
+                Placeholder="Email - border and separator"
+                SeparatorVisible="True" />
+
+            <customControls:ValidationEntry
+                x:Name="PasswordValidationEntry"
+                Margin="0,0,0,40"
+                BorderColor="Black"
+                BorderVisible="True"
+                CornerRadius="8"
+                ErrorBorderColor="Red"
+                ErrorColor="Orange"
+                ErrorFontSize="11"
+                ErrorMessage="Must be at least 8 characters"
+                ErrorSeparatorColor="Black"
+                IsValid="False"
+                Placeholder="Password"
+                SeparatorVisible="True"
+                Text="abc" />
+
         </VerticalStackLayout>
     </ScrollView>
 
