@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<CheckEolWorkloads>false</CheckEolWorkloads>
@@ -14,10 +14,10 @@
 		<Nullable>enable</Nullable>
 
 		<PackageId>CommonControls.Maui</PackageId>
-		<Version>1.0.4</Version>
+		<Version>1.0.6</Version>
 		<Authors>Ilija Rushkovski</Authors>
-		<Description>Common borderless controls for .NET MAUI (Entry, Editor, PasswordEntry) with Android/iOS handler mappings.</Description>
-		<PackageTags>maui;entry;editor;password;handler;android;ios;borderless;controls</PackageTags>
+		<Description>Clean borderless input controls for .NET MAUI � BorderlessEntry, BorderlessEditor, PasswordEntry with show/hide toggle, and ValidationEntry with configurable border, separator, and inline error messages. Includes Android and iOS handler mappings.</Description>
+		<PackageTags>maui;entry;editor;password;handler;android;ios;borderless;controls;validation;border;textfield</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryUrl>https://github.com/ilija2407/maui-common-controls</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -39,7 +39,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="\" />
+		<None Include="README.md" Pack="true" PackagePath="/" />
 	</ItemGroup>
 
 </Project>

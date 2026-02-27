@@ -66,7 +66,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\CommonControls.Maui\CommonControls.Maui.csproj" />
+		<PackageReference Include="CommonControls.Maui" Version="1.0.6" />
 	</ItemGroup>
 
 </Project>

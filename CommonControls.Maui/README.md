@@ -1,15 +1,17 @@
 ﻿# CommonControls.Maui
 
-A .NET MAUI library providing clean, borderless input controls with full Android and iOS handler mappings.
+[![NuGet](https://img.shields.io/nuget/v/CommonControls.Maui.svg)](https://www.nuget.org/packages/CommonControls.Maui/)
+
+A .NET MAUI library providing clean, borderless input controls with Android and iOS handler mappings.
 
 ## Controls
 
 | Control | Description |
 |---|---|
-| `BorderlessEntry` | `Entry` without platform border/underline |
-| `BorderlessEditor` | `Editor` without platform border/underline |
-| `PasswordEntry` | Password input with built-in show/hide toggle |
-| `ValidationEntry` | Entry with configurable border, separator line, and inline error message |
+| **BorderlessEntry** | Entry without platform border/underline |
+| **BorderlessEditor** | Editor without platform border/underline |
+| **PasswordEntry** | Password input with built-in show/hide toggle |
+| **ValidationEntry** | Entry with configurable border, separator, and inline error message |
 
 ---
 
@@ -17,13 +19,13 @@ A .NET MAUI library providing clean, borderless input controls with full Android
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="CommonControls.Maui" Version="1.0.5" />
+  <PackageReference Include="CommonControls.Maui" Version="1.0.6" />
 </ItemGroup>
 ```
 
 ## Setup
 
-Register handler mappings once in `MauiProgram.cs`:
+Register handler mappings once in **MauiProgram.cs**:
 
 ```csharp
 using CommonControls.Maui.Hosting;
@@ -41,7 +43,7 @@ xmlns:cc="clr-namespace:CommonControls.Maui.Controls;assembly=CommonControls.Mau
 
 ## BorderlessEntry
 
-`Entry` with the platform-native border/underline removed.
+Entry with the platform-native border/underline removed.
 
 ```xml
 <cc:BorderlessEntry Placeholder="Email" />
@@ -51,7 +53,7 @@ xmlns:cc="clr-namespace:CommonControls.Maui.Controls;assembly=CommonControls.Mau
 
 ## BorderlessEditor
 
-`Editor` with the platform-native border removed.
+Editor with the platform-native border removed.
 
 ```xml
 <cc:BorderlessEditor Placeholder="Notes" HeightRequest="100" />
@@ -80,31 +82,31 @@ Password input with a built-in show/hide toggle button. Uses bundled eye icons b
 
 | Property | Type | Default | Description |
 |---|---|---|---|
-| `Text` | `string` | `null` | Input text (two-way bindable) |
-| `Placeholder` | `string` | `null` | Placeholder text |
-| `IsPassword` | `bool` | `true` | Toggles password masking |
-| `ShowPasswordImageSource` | `ImageSource` | built-in eye icon | Icon shown when password is hidden |
-| `HidePasswordImageSource` | `ImageSource` | built-in hidden icon | Icon shown when password is visible |
-| `ImageHeight` | `double` | `24` | Toggle icon height |
-| `ImageWidth` | `double` | `24` | Toggle icon width |
-| `FontSize` | `double` | `14` | Input font size |
-| `TextColor` | `Color` | platform default | Input text color |
-| `PlaceholderColor` | `Color` | platform default | Placeholder text color |
+| **Text** | string | null | Input text (two-way bindable) |
+| **Placeholder** | string | null | Placeholder text |
+| **IsPassword** | bool | true | Toggles password masking |
+| **ShowPasswordImageSource** | ImageSource | built-in eye icon | Icon shown when password is hidden |
+| **HidePasswordImageSource** | ImageSource | built-in hidden icon | Icon shown when password is visible |
+| **ImageHeight** | double | 24 | Toggle icon height |
+| **ImageWidth** | double | 24 | Toggle icon width |
+| **FontSize** | double | 14 | Input font size |
+| **TextColor** | Color | platform default | Input text color |
+| **PlaceholderColor** | Color | platform default | Placeholder text color |
 
 ---
 
 ## ValidationEntry
 
-An entry that wraps a configurable border and displays an inline error message. The border and separator line are independently controlled.
+An entry with a configurable border and inline error message. The border and separator are independently controlled — mix and match to suit your design.
 
 ### Border / separator combinations
 
-| `BorderVisible` | `SeparatorVisible` | Error state appearance |
+| BorderVisible | SeparatorVisible | Error state appearance |
 |---|---|---|
-| `false` | `false` | no border, no separator — only error text |
-| `true` | `false` | border changes to `ErrorBorderColor`, no separator |
-| `false` | `true` | no border, separator line appears above error text |
-| `true` | `true` | border + separator line, both switch to error color |
+| false | false | no border, no separator — only error text |
+| true | false | border switches to ErrorBorderColor, no separator |
+| false | true | no border, separator line appears above error text |
+| true | true | border and separator both switch to error color |
 
 ```xml
 <!-- No border, separator only -->
@@ -144,25 +146,25 @@ An entry that wraps a configurable border and displays an inline error message. 
 
 | Property | Type | Default | Description |
 |---|---|---|---|
-| `Text` | `string` | `null` | Input text (two-way bindable) |
-| `Placeholder` | `string` | `null` | Placeholder text |
-| `IsValid` | `bool` | `true` | When `false`, switches to error state |
-| `ErrorMessage` | `string` | `""` | Text shown below the entry when invalid |
-| `Keyboard` | `Keyboard` | `Default` | Keyboard type (`Email`, `Numeric`, `Telephone`, etc.) |
-| `FontSize` | `double` | `14` | Input font size |
-| `TextColor` | `Color` | platform default | Input text color |
-| `PlaceholderColor` | `Color` | platform default | Placeholder text color |
-| `BorderVisible` | `bool` | `false` | Show a rectangular border around the control |
-| `BorderColor` | `Color` | `Transparent` | Border color when valid |
-| `ErrorBorderColor` | `Color` | `Red` | Border color when invalid |
-| `CornerRadius` | `double` | `0` | Corner radius of the border |
-| `SeparatorVisible` | `bool` | `false` | Show a 1 px line above the error message when invalid |
-| `ErrorSeparatorColor` | `Color` | `Red` | Separator color when invalid |
-| `ErrorColor` | `Color` | `Red` | Error message text color |
-| `ErrorFontSize` | `double` | `12` | Error message font size |
+| **Text** | string | null | Input text (two-way bindable) |
+| **Placeholder** | string | null | Placeholder text |
+| **IsValid** | bool | true | When false, switches to error state |
+| **ErrorMessage** | string | empty | Text shown below the entry when invalid |
+| **Keyboard** | Keyboard | Default | Keyboard type (Email, Numeric, Telephone, etc.) |
+| **FontSize** | double | 14 | Input font size |
+| **TextColor** | Color | platform default | Input text color |
+| **PlaceholderColor** | Color | platform default | Placeholder text color |
+| **BorderVisible** | bool | false | Show a rectangular border around the control |
+| **BorderColor** | Color | Transparent | Border color when valid |
+| **ErrorBorderColor** | Color | Red | Border color when invalid |
+| **CornerRadius** | double | 0 | Corner radius of the border |
+| **SeparatorVisible** | bool | false | Show a 1px line above the error message when invalid |
+| **ErrorSeparatorColor** | Color | Red | Separator color when invalid |
+| **ErrorColor** | Color | Red | Error message text color |
+| **ErrorFontSize** | double | 12 | Error message font size |
 
 ### Events
 
 | Event | Description |
 |---|---|
-| `TextChanged` | Raised when the input text changes |
+| **TextChanged** | Raised when the input text changes |
