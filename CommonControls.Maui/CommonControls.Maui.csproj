@@ -14,10 +14,10 @@
 		<Nullable>enable</Nullable>
 
 		<PackageId>CommonControls.Maui</PackageId>
-		<Version>1.0.6</Version>
+		<Version>1.1.0</Version>
 		<Authors>Ilija Rushkovski</Authors>
-		<Description>Clean borderless input controls for .NET MAUI � BorderlessEntry, BorderlessEditor, PasswordEntry with show/hide toggle, and ValidationEntry with configurable border, separator, and inline error messages. Includes Android and iOS handler mappings.</Description>
-		<PackageTags>maui;entry;editor;password;handler;android;ios;borderless;controls;validation;border;textfield</PackageTags>
+		<Description>Clean, customisable .NET MAUI controls — BorderlessEntry, BorderlessEditor, PasswordEntry with show/hide toggle, ValidationEntry with configurable border/separator/inline errors, and StateButton with press animations (Scale/Fade), busy/loading state, divider layout, gradient background, image positions, FontAttributes/FontSize, and IsEnabled visual feedback. Android and iOS supported.</Description>
+		<PackageTags>maui;entry;editor;password;handler;android;ios;borderless;controls;validation;border;textfield;statebutton;button;animation;gradient;divider</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryUrl>https://github.com/ilija2407/maui-common-controls</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>

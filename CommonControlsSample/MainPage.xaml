@@ -1,9 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="CommonControlsSample.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:customControls="clr-namespace:CommonControls.Maui.Controls;assembly=CommonControls.Maui">
+    xmlns:customControls="clr-namespace:CommonControls.Maui.Controls;assembly=CommonControls.Maui"
+    BackgroundColor="#F8F5FF">
 
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">
@@ -108,6 +109,183 @@
                 SeparatorVisible="True"
                 Text="abc" />
 
+            <!--  ─── IMAGE POSTION ────────────────────────────  -->
+            <VerticalStackLayout Spacing="10">
+
+                <Label
+                    Margin="4,0"
+                    CharacterSpacing="1.5"
+                    FontAttributes="Bold"
+                    FontSize="11"
+                    Text="IMAGE POSTION"
+                    TextColor="#7B7B8B" />
+
+                <Border
+                    Padding="20"
+                    BackgroundColor="White"
+                    Stroke="#EDE7F6"
+                    StrokeThickness="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+
+                        <!--  IsBusy – purple gradient  -->
+                        <customControls:StateButton
+                            Grid.Column="0"
+                            CornerRadius="22"
+                            DividerColor="#7C3AED"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HorizontalOptions="Fill"
+                            ImagePosition="End"
+                            ImageSource="icon_refresh.png"
+                            ShowDivider="True"
+                            Text="Click Me"
+                            TextColor="#7C3AED">
+                            <customControls:StateButton.BackgroundBrush>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Offset="0.0" Color="#EDE9FE" />
+                                    <GradientStop Offset="1.0" Color="#F5F3FF" />
+                                </LinearGradientBrush>
+                            </customControls:StateButton.BackgroundBrush>
+                        </customControls:StateButton>
+
+                        <!--  Fade – outlined violet  -->
+                        <customControls:StateButton
+                            Grid.Column="1"
+                            AnimationType="Fade"
+                            BackgroundColor="Transparent"
+                            BorderColor="#8B56E2"
+                            CornerRadius="22"
+                            DividerColor="#8B56E2"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HorizontalOptions="Fill"
+                            ImagePosition="Start"
+                            ImageSource="icon_sparkle.png"
+                            ShowDivider="False"
+                            Text="Fade"
+                            TextColor="#8B56E2">
+                            <customControls:StateButton.BackgroundBrush>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Offset="0.0" Color="#EDE9FE" />
+                                    <GradientStop Offset="1.0" Color="#F5F3FF" />
+                                </LinearGradientBrush>
+                            </customControls:StateButton.BackgroundBrush>
+                        </customControls:StateButton>
+
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+
+            <!--  ─── DIVIDER STYLE ─────────────────────────────  -->
+            <VerticalStackLayout Spacing="10">
+
+                <Label
+                    Margin="4,0"
+                    CharacterSpacing="1.5"
+                    FontAttributes="Bold"
+                    FontSize="11"
+                    Text="DIVIDER STYLE"
+                    TextColor="#7B7B8B" />
+
+                <Border
+                    Margin="0,0,0,40"
+                    Padding="20"
+                    BackgroundColor="White"
+                    Stroke="#EDE7F6"
+                    StrokeThickness="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="12"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="12">
+
+                        <!--  Login – amber gradient  -->
+                        <customControls:StateButton
+                            x:Name="BusyDemoStateButton"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            BorderColor="#3B82F6"
+                            CornerRadius="22"
+                            DividerColor="#3B82F6"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HorizontalOptions="Fill"
+                            ImagePosition="End"
+                            ImageSource="icon_lock.png"
+                            ShowDivider="True"
+                            Text="Login"
+                            TextColor="#3B82F6">
+
+                            <customControls:StateButton.BackgroundBrush>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Offset="0.0" Color="#EFF6FF" />
+                                    <GradientStop Offset="1.0" Color="#FFFEF5" />
+                                </LinearGradientBrush>
+                            </customControls:StateButton.BackgroundBrush>
+                        </customControls:StateButton>
+
+                        <!--  Share It – outlined orange-red  -->
+                        <customControls:StateButton
+                            x:Name="ShareItStateButton"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            BackgroundColor="Transparent"
+                            BorderColor="#F0622A"
+                            CornerRadius="22"
+                            DividerColor="#F0622A"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HorizontalOptions="Fill"
+                            ImagePosition="End"
+                            ImageSource="icon_share.png"
+                            ShowDivider="True"
+                            Text="Share It"
+                            TextColor="#F0622A" />
+
+                        <!--  Book Now – outlined red  -->
+                        <customControls:StateButton
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            BackgroundColor="Transparent"
+                            BorderColor="#EF4444"
+                            CornerRadius="22"
+                            DividerColor="#EF4444"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HorizontalOptions="Fill"
+                            ImagePosition="End"
+                            ImageSource="icon_arrow_right.png"
+                            ShowDivider="True"
+                            Text="Book Now"
+                            TextColor="#EF4444" />
+
+                        <!--  Sign Up – filled blue  -->
+                        <customControls:StateButton
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            BackgroundColor="#EFF6FF"
+                            BorderColor="#3B82F6"
+                            CornerRadius="22"
+                            DividerColor="#3B82F6"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HorizontalOptions="Fill"
+                            ImagePosition="End"
+                            ImageSource="icon_person.png"
+                            ShowDivider="True"
+                            Text="Sign Up"
+                            TextColor="#3B82F6" />
+
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 

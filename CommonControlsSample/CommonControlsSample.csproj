@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android;net10.0-ios</TargetFrameworks>
@@ -50,6 +50,12 @@
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+		<MauiImage Update="Resources\Images\icon_lock.svg"        BaseSize="24,24" />
+		<MauiImage Update="Resources\Images\icon_share.svg"       BaseSize="24,24" />
+		<MauiImage Update="Resources\Images\icon_arrow_right.svg" BaseSize="24,24" />
+		<MauiImage Update="Resources\Images\icon_person.svg"      BaseSize="24,24" />
+		<MauiImage Update="Resources\Images\icon_refresh.svg"     BaseSize="24,24" />
+		<MauiImage Update="Resources\Images\icon_sparkle.svg"     BaseSize="24,24" />
 		
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -60,13 +66,17 @@
 
 
 	<ItemGroup>
+		<ProjectReference Include="..\CommonControls.Maui\CommonControls.Maui.csproj" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 	</ItemGroup>
 
+
 	<ItemGroup>
-		<PackageReference Include="CommonControls.Maui" Version="1.0.6" />
+	  <MauiXaml Update="MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
