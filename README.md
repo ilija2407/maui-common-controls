@@ -7,6 +7,7 @@
 - **BorderlessEntry** — `Entry` without platform border/underline
 - **BorderlessEditor** — `Editor` without platform border/underline
 - **PasswordEntry** — Password input with built-in show/hide toggle icon (customizable)
+- **StateButton** | Tappable button with press animations, busy/loading state, divider layout, gradient background, and image support |
 
 ## Intention
 
@@ -17,6 +18,10 @@ The goal is to make it easy to achieve clean, borderless text inputs across plat
 Package: `CommonControls.Maui`
 
 https://www.nuget.org/packages/CommonControls.Maui/
+
+
+https://github.com/user-attachments/assets/2fa76260-6179-4afb-9271-f0b0dc6e4604
+
 
 ![CustomControlsLinkedinPost2](https://github.com/user-attachments/assets/58543b21-e0ae-4bc6-b05a-af54bc531a26)
 
