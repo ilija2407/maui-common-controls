@@ -2,7 +2,7 @@
 
 [![NuGet](https://img.shields.io/nuget/v/CommonControls.Maui.svg)](https://www.nuget.org/packages/CommonControls.Maui/)
 
-A .NET MAUI library providing clean, borderless input controls with Android and iOS handler mappings.
+A .NET MAUI library providing clean, customisable controls for Android and iOS.
 
 ## Controls
 
@@ -12,6 +12,7 @@ A .NET MAUI library providing clean, borderless input controls with Android and 
 | **BorderlessEditor** | Editor without platform border/underline |
 | **PasswordEntry** | Password input with built-in show/hide toggle |
 | **ValidationEntry** | Entry with configurable border, separator, and inline error message |
+| **StateButton** | Tappable button with press animations, busy/loading state, divider layout, gradient background, and image support |
 
 ---
 
@@ -19,7 +20,7 @@ A .NET MAUI library providing clean, borderless input controls with Android and 
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="CommonControls.Maui" Version="1.0.6" />
+  <PackageReference Include="CommonControls.Maui" Version="1.1.1" />
 </ItemGroup>
 ```
 
@@ -168,3 +169,108 @@ An entry with a configurable border and inline error message. The border and sep
 | Event | Description |
 |---|---|
 | **TextChanged** | Raised when the input text changes |
+
+---
+
+## StateButton
+
+A fully customisable tappable button built as a `ContentView`. Supports press animations, a busy/loading spinner, an optional vertical divider with a trailing icon, gradient backgrounds, and a visual disabled state.
+
+### Basic usage
+
+```xml
+<!-- Solid filled -->
+<cc:StateButton
+    BackgroundColor="#512BD4"
+    CornerRadius="10"
+    Text="Tap me"
+    TextColor="White" />
+
+<!-- Outlined -->
+<cc:StateButton
+    BackgroundColor="Transparent"
+    BorderColor="#512BD4"
+    CornerRadius="10"
+    Text="Tap me"
+    TextColor="#512BD4" />
+```
+
+### Gradient background
+
+```xml
+<cc:StateButton CornerRadius="22" Text="Login" TextColor="#3B82F6">
+    <cc:StateButton.BackgroundBrush>
+        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Offset="0.0" Color="#EFF6FF" />
+            <GradientStop Offset="1.0" Color="#FFFEF5" />
+        </LinearGradientBrush>
+    </cc:StateButton.BackgroundBrush>
+</cc:StateButton>
+```
+
+### Divider + trailing icon
+
+```xml
+<cc:StateButton
+    CornerRadius="22"
+    HorizontalOptions="Fill"
+    DividerColor="#3B82F6"
+    ImagePosition="End"
+    ImageSource="icon_lock.png"
+    ShowDivider="True"
+    Text="Login"
+    TextColor="#3B82F6" />
+```
+
+> **iOS note:** reference rasterised images with `.png` extension (e.g. `icon_lock.png`), not `.svg`.
+> Alternatively use `FontImageSource` to avoid the bundle lookup entirely:
+> ```xml
+> <cc:StateButton.ImageSource>
+>     <FontImageSource Glyph="&#x1F512;" Size="18" Color="#3B82F6" />
+> </cc:StateButton.ImageSource>
+> ```
+
+### Busy / loading state
+
+```xml
+<cc:StateButton x:Name="SaveBtn" Text="Save" BackgroundColor="#512BD4" TextColor="White" />
+```
+```csharp
+SaveBtn.Command = new Command(async () =>
+{
+    SaveBtn.IsBusy = true;
+    await DoWorkAsync();
+    SaveBtn.IsBusy = false;
+});
+```
+
+### Command binding
+
+```xml
+<cc:StateButton
+    Text="Submit"
+    Command="{Binding SubmitCommand}"
+    CommandParameter="{Binding Item}" />
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|---|---|---|---|
+| **Text** | string | "" | Button label |
+| **TextColor** | Color | White | Label colour |
+| **FontAttributes** | FontAttributes | None | Bold / Italic |
+| **FontSize** | double | 14 | Label font size |
+| **BackgroundColor** | Color | Transparent | Solid fill colour (overridden by `BackgroundBrush`) |
+| **BackgroundBrush** | Brush | null | Gradient or solid brush painted on the button border |
+| **BorderColor** | Color | Transparent | Stroke colour |
+| **CornerRadius** | double | 8 | Corner radius |
+| **ImageSource** | ImageSource | null | Trailing / leading icon |
+| **ImagePosition** | ButtonImagePosition | Start | `Start`, `End`, `Top`, `Bottom` |
+| **ShowDivider** | bool | false | Show a vertical divider between label and icon |
+| **DividerColor** | Color | White | Divider colour |
+| **AnimationType** | ButtonAnimationType | Scale | `Scale`, `Fade`, `None` |
+| **IsBusy** | bool | false | Shows an `ActivityIndicator` and hides content while true |
+| **IsEnabled** | bool | true | When false, blocks input and fades the button to 40 % opacity |
+| **Command** | ICommand | null | Executed after the press animation completes |
+| **CommandParameter** | object | null | Parameter passed to `Command` |
