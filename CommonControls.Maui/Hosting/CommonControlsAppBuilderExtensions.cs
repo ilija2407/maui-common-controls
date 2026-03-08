@@ -1,7 +1,7 @@
 using CommonControls.Maui.Controls;
 using Microsoft.Maui.Handlers;
 
-#if IOS
+#if IOS || MACCATALYST
 using UIKit;
 #endif
 
@@ -37,7 +37,7 @@ public static class CommonControlsAppBuilderExtensions
 
             platformView.Background = null;
             platformView.SetPadding(0, 0, 0, 0);
-#elif IOS
+#elif IOS || MACCATALYST
             var platformView = handler.PlatformView;
             if (platformView is null)
             {
@@ -46,6 +46,17 @@ public static class CommonControlsAppBuilderExtensions
 
             platformView.BorderStyle = UITextBorderStyle.None;
             platformView.BackgroundColor = UIColor.Clear;
+#elif WINDOWS
+            var platformView = handler.PlatformView;
+            if (platformView is null)
+            {
+                return;
+            }
+
+            platformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(0);
+            platformView.Padding = new Microsoft.UI.Xaml.Thickness(0);
+            platformView.Resources["TextControlBorderThemeThickness"] = new Microsoft.UI.Xaml.Thickness(0);
+            platformView.Resources["TextControlBorderThemeThicknessFocused"] = new Microsoft.UI.Xaml.Thickness(0);
 #endif
         });
 
@@ -66,6 +77,26 @@ public static class CommonControlsAppBuilderExtensions
 
             platformView.Background = null;
             platformView.SetPadding(0, 0, 0, 0);
+#elif IOS || MACCATALYST
+            var platformView = handler.PlatformView;
+            if (platformView is null)
+            {
+                return;
+            }
+
+            platformView.Layer.BorderWidth = 0;
+            platformView.BackgroundColor = UIColor.Clear;
+#elif WINDOWS
+            var platformView = handler.PlatformView;
+            if (platformView is null)
+            {
+                return;
+            }
+
+            platformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(0);
+            platformView.Padding = new Microsoft.UI.Xaml.Thickness(0);
+            platformView.Resources["TextControlBorderThemeThickness"] = new Microsoft.UI.Xaml.Thickness(0);
+            platformView.Resources["TextControlBorderThemeThicknessFocused"] = new Microsoft.UI.Xaml.Thickness(0);
 #endif
         });
 

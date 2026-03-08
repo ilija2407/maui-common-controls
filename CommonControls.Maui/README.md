@@ -2,7 +2,7 @@
 
 [![NuGet](https://img.shields.io/nuget/v/CommonControls.Maui.svg)](https://www.nuget.org/packages/CommonControls.Maui/)
 
-A .NET MAUI library providing clean, customisable controls for Android and iOS.
+A .NET MAUI library providing clean, customisable controls for Android, iOS, Mac Catalyst, and Windows.
 
 ## Controls
 
@@ -13,6 +13,16 @@ A .NET MAUI library providing clean, customisable controls for Android and iOS.
 | **PasswordEntry** | Password input with built-in show/hide toggle |
 | **ValidationEntry** | Entry with configurable border, separator, and inline error message |
 | **StateButton** | Tappable button with press animations, busy/loading state, divider layout, gradient background, and image support |
+
+### Platform support
+
+| Control | Android | iOS | Mac Catalyst | Windows |
+|---|---|---|---|---|
+| **BorderlessEntry** | ✅ | ✅ | ✅ | ✅ |
+| **BorderlessEditor** | ✅ | ✅ | ✅ | ✅ |
+| **PasswordEntry** | ✅ | ✅ | ✅ | ✅ |
+| **ValidationEntry** | ✅ | ✅ | ✅ | ✅ |
+| **StateButton** | ✅ | ✅ | ✅ | ✅ |
 
 ---
 
@@ -222,7 +232,7 @@ A fully customisable tappable button built as a `ContentView`. Supports press an
     TextColor="#3B82F6" />
 ```
 
-> **iOS note:** reference rasterised images with `.png` extension (e.g. `icon_lock.png`), not `.svg`.
+> **iOS & Mac Catalyst note:** reference rasterised images with `.png` extension (e.g. `icon_lock.png`), not `.svg`.
 > Alternatively use `FontImageSource` to avoid the bundle lookup entirely:
 > ```xml
 > <cc:StateButton.ImageSource>

@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<CheckEolWorkloads>false</CheckEolWorkloads>
 
-		<TargetFrameworks>net10.0-android;net10.0-ios</TargetFrameworks>
+		<TargetFrameworks>net10.0;net10.0-android;net10.0-ios;net10.0-maccatalyst;net10.0-windows10.0.19041.0</TargetFrameworks>
 
 		<RepositoryType>git</RepositoryType>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -16,8 +16,8 @@
 		<PackageId>CommonControls.Maui</PackageId>
 		<Version>1.1.1</Version>
 		<Authors>Ilija Rushkovski</Authors>
-		<Description>Clean, customisable .NET MAUI controls — BorderlessEntry, BorderlessEditor, PasswordEntry with show/hide toggle, ValidationEntry with configurable border/separator/inline errors, and StateButton with press animations (Scale/Fade), busy/loading state, divider layout, gradient background, image positions, FontAttributes/FontSize, and IsEnabled visual feedback. Android and iOS supported.</Description>
-		<PackageTags>maui;entry;editor;password;handler;android;ios;borderless;controls;validation;border;textfield;statebutton;button;animation;gradient;divider</PackageTags>
+		<Description>Clean, customisable .NET MAUI controls — BorderlessEntry, BorderlessEditor, PasswordEntry with show/hide toggle, ValidationEntry with configurable border/separator/inline errors, and StateButton with press animations (Scale/Fade), busy/loading state, divider layout, gradient background, image positions, FontAttributes/FontSize, and IsEnabled visual feedback. Supports Android, iOS, Mac Catalyst, and Windows.</Description>
+		<PackageTags>maui;entry;editor;password;handler;android;ios;maccatalyst;windows;borderless;controls;validation;border;textfield;statebutton;button;animation;gradient;divider</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<RepositoryUrl>https://github.com/ilija2407/maui-common-controls</RepositoryUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -27,6 +27,9 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

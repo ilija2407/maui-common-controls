@@ -2,12 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
     <!-- See https://aka.ms/maui-publish-app-store#add-entitlements for more information about adding entitlements.-->
+    <!-- NOTE: com.apple.security.app-sandbox is intentionally absent here.
+         It is only required for Mac App Store distribution, not for development or debugging.
+         App Sandbox prevents dotnet-dsrouter from connecting to the app's diagnostic port,
+         which causes the debugger to fail with "CoreCLR started event" errors.
+         Add sandbox entitlements in a separate Release/AppStore entitlements file instead. -->
     <dict>
-        <!-- App Sandbox must be enabled to distribute a MacCatalyst app through the Mac App Store. -->
-        <key>com.apple.security.app-sandbox</key>
-        <true/>
-        <!-- When App Sandbox is enabled, this value is required to open outgoing network connections. -->
-        <key>com.apple.security.network.client</key>
+        <key>com.apple.security.get-task-allow</key>
         <true/>
     </dict>
 </plist>

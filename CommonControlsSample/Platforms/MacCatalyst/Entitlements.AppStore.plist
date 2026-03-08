@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <!-- Use this entitlements file for Mac App Store distribution builds only.
+         See https://aka.ms/maui-publish-app-store#add-entitlements -->
+    <dict>
+        <!-- App Sandbox is required for Mac App Store distribution. -->
+        <key>com.apple.security.app-sandbox</key>
+        <true/>
+        <!-- Required to open outgoing network connections when App Sandbox is enabled. -->
+        <key>com.apple.security.network.client</key>
+        <true/>
+    </dict>
+</plist>
