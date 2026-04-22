@@ -16,15 +16,27 @@ public partial class StateButton
         {
             case ButtonAnimationType.Scale:
                 this.AbortAnimation(AnimationKey);
+#if NET10_0_OR_GREATER
+                await this.ScaleToAsync(0.95, 60);
+                ExecuteCommand();
+                await this.ScaleToAsync(1.0, 100);
+#else
                 await this.ScaleTo(0.95, 60);
                 ExecuteCommand();
                 await this.ScaleTo(1.0, 100);
+#endif
                 break;
             case ButtonAnimationType.Fade:
                 this.AbortAnimation(AnimationKey);
+#if NET10_0_OR_GREATER
+                await this.FadeToAsync(0.7, 60);
+                ExecuteCommand();
+                await this.FadeToAsync(1.0, 100);
+#else
                 await this.FadeTo(0.7, 60);
                 ExecuteCommand();
                 await this.FadeTo(1.0, 100);
+#endif
                 break;
             default:
                 ExecuteCommand();

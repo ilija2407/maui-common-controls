@@ -2,8 +2,8 @@ namespace CommonControls.Maui.Controls;
 
 public class PasswordEntry : ContentView
 {
-    private const string EyeResourceName = "CommonControls.Maui.Resources.Images.cc_eye.png";
-    private const string HiddenResourceName = "CommonControls.Maui.Resources.Images.cc_hidden.png";
+    private const string EyeResourceName = "CommonControls.Maui.Assets.cc_eye.png";
+    private const string HiddenResourceName = "CommonControls.Maui.Assets.cc_hidden.png";
 
     private static byte[]? _eyeBytes;
     private static byte[]? _hiddenBytes;
@@ -157,7 +157,7 @@ public class PasswordEntry : ContentView
         set => SetValue(ImageWidthProperty, value);
     }
 
-    public new double FontSize
+    public double FontSize
     {
         get => (double)GetValue(FontSizeProperty);
         set => SetValue(FontSizeProperty, value);
