@@ -82,13 +82,17 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\CommonControls.Maui.KPI\CommonControls.Maui.KPI.csproj" />
+	</ItemGroup>
+
 
 	<ItemGroup>
 		<MauiXaml Update="MainPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Platforms\Windows\App.xaml">
-		  <Generator>MSBuild:Compile</Generator>
+			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 	</ItemGroup>
 

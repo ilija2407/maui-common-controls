@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CommonControlsSample.BulletGraphSamplePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:kpi="clr-namespace:CommonControls.Maui.Controls;assembly=CommonControls.Maui"
+    Title="BulletGraph"
+    BackgroundColor="#F8F5FF">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="22"
+                Text="BulletGraph showcase"
+                TextColor="#1F2937" />
+            <Label
+                FontSize="13"
+                Text="Lightweight, dashboard-friendly KPI visualizations."
+                TextColor="#6B7280" />
+
+            <!--  Card: Revenue with qualitative ranges + target  -->
+            <Border
+                Padding="18"
+                BackgroundColor="White"
+                Stroke="#EDE7F6"
+                StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <kpi:BulletGraph
+                    AverageRangeEnd="70"
+                    GoodRangeEnd="100"
+                    Maximum="100"
+                    Minimum="0"
+                    PoorRangeEnd="40"
+                    Subtitle="On track"
+                    Target="80"
+                    Title="Revenue Progress"
+                    Value="72"
+                    ValueText="$72k" />
+            </Border>
+
+            <!--  Card: Minimal — only value + target  -->
+            <Border
+                Padding="18"
+                BackgroundColor="White"
+                Stroke="#EDE7F6"
+                StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <kpi:BulletGraph
+                    Maximum="100"
+                    Minimum="0"
+                    Target="80"
+                    Title="Orders Completed"
+                    Value="72"
+                    ValueText="72%" />
+            </Border>
+
+            <!--  Card: Battery health — custom colors  -->
+            <Border
+                Padding="18"
+                BackgroundColor="White"
+                Stroke="#EDE7F6"
+                StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <kpi:BulletGraph
+                    BarHeight="18"
+                    CornerRadius="9"
+                    FillColor="#10B981"
+                    Maximum="100"
+                    Minimum="0"
+                    ShowTargetMarker="False"
+                    Subtitle="Healthy"
+                    Title="Battery Health"
+                    TrackColor="#ECFDF5"
+                    Value="86"
+                    ValueText="86%" />
+            </Border>
+
+            <!--  Card: Project health — axis labels (no subtitle)  -->
+            <Border
+                Padding="18"
+                BackgroundColor="White"
+                Stroke="#EDE7F6"
+                StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <kpi:BulletGraph
+                    AverageRangeEnd="7"
+                    GoodRangeEnd="10"
+                    Maximum="10"
+                    Minimum="0"
+                    PoorRangeEnd="4"
+                    ShowAxisLabels="True"
+                    Target="8"
+                    Title="Project Health"
+                    Value="6.4"
+                    ValueText="6.4 / 10" />
+            </Border>
+
+            <!--  Card: Goal tracking — large target overshoot  -->
+            <Border
+                Padding="18"
+                BackgroundColor="White"
+                Stroke="#EDE7F6"
+                StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <kpi:BulletGraph
+                    BarHeight="12"
+                    FillColor="#F59E0B"
+                    Maximum="500"
+                    Minimum="0"
+                    Subtitle="Q4 stretch goal"
+                    Target="400"
+                    TargetColor="#111827"
+                    Title="Goal Tracking"
+                    Value="430"
+                    ValueText="430 / 500" />
+            </Border>
+
+            <!--  CollectionView: shows the control is light enough for lists  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="14"
+                Text="In a CollectionView"
+                TextColor="#1F2937" />
+
+            <CollectionView ItemsSource="{Binding KpiItems}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Margin="0,0,0,10"
+                            Padding="14"
+                            BackgroundColor="White"
+                            Stroke="#EDE7F6"
+                            StrokeThickness="1">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="14" />
+                            </Border.StrokeShape>
+                            <kpi:BulletGraph
+                                Maximum="100"
+                                Minimum="0"
+                                Target="{Binding Target}"
+                                Title="{Binding Title}"
+                                Value="{Binding Value}"
+                                ValueText="{Binding ValueText}" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
