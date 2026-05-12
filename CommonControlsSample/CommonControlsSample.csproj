@@ -82,9 +82,6 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\CommonControls.Maui.KPI\CommonControls.Maui.KPI.csproj" />
-	</ItemGroup>
 
 
 	<ItemGroup>
