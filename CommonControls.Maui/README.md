@@ -2,7 +2,9 @@
 
 [![NuGet](https://img.shields.io/nuget/v/CommonControls.Maui.svg)](https://www.nuget.org/packages/CommonControls.Maui/)
 
-A .NET MAUI library providing clean, customisable controls for Android, iOS, Mac Catalyst, and Windows.
+Reusable .NET MAUI controls for everyday UI needs, from borderless inputs and inline validation feedback to animated buttons and compact KPI displays. Use the controls in existing XAML layouts with MAUI bindings and commands.
+
+This is the control reference for the repository source. For screenshots, recordings, and a complete first-use example, see the [project overview](https://github.com/ilija2407/maui-common-controls#readme). Check the README included with your installed NuGet version for its available API.
 
 ## Controls
 
@@ -13,8 +15,9 @@ A .NET MAUI library providing clean, customisable controls for Android, iOS, Mac
 | **PasswordEntry** | Password input with built-in show/hide toggle |
 | **ValidationEntry** | Entry with configurable border, separator, and inline error message |
 | **StateButton** | Tappable button with press animations, busy/loading state, divider layout, gradient background, and image support |
+| **BulletGraph** | Compact value bar with target marker, qualitative ranges, title, subtitle, value text, and optional axis labels |
 
-### Platform support
+### Compatibility
 
 | Control | Android | iOS | Mac Catalyst | Windows |
 |---|---|---|---|---|
@@ -23,15 +26,18 @@ A .NET MAUI library providing clean, customisable controls for Android, iOS, Mac
 | **PasswordEntry** | ✅ | ✅ | ✅ | ✅ |
 | **ValidationEntry** | ✅ | ✅ | ✅ | ✅ |
 | **StateButton** | ✅ | ✅ | ✅ | ✅ |
+| **BulletGraph** | ✅ | ✅ | ✅ | ✅ |
+
+The current library project targets .NET 9 and .NET 10 for all four platforms. The table reflects the declared platform targets, rather than a device-by-device test matrix. Windows targets build 19041 or later. The sample application targets .NET 10; Apple builds require a Mac with compatible Xcode tooling.
 
 ---
 
 ## Installation
 
-```xml
-<ItemGroup>
-  <PackageReference Include="CommonControls.Maui" Version="1.1.1" />
-</ItemGroup>
+Run in your .NET MAUI application directory:
+
+```shell
+dotnet add package CommonControls.Maui
 ```
 
 ## Setup
@@ -108,7 +114,7 @@ Password input with a built-in show/hide toggle button. Uses bundled eye icons b
 
 ## ValidationEntry
 
-An entry with a configurable border and inline error message. The border and separator are independently controlled — mix and match to suit your design.
+An entry that displays validation feedback with a configurable border and inline error message. The border and separator are independently controlled. Supply `IsValid` and `ErrorMessage` from your application or view model; the control does not evaluate validation rules itself.
 
 ### Border / separator combinations
 
@@ -140,17 +146,17 @@ An entry with a configurable border and inline error message. The border and sep
 
 <!-- Border and separator with corner radius -->
 <cc:ValidationEntry
-    Placeholder="Password"
+    Placeholder="Username"
     BorderColor="Black"
     BorderVisible="True"
     CornerRadius="8"
     ErrorBorderColor="Black"
     SeparatorVisible="True"
     ErrorSeparatorColor="Black"
-    ErrorMessage="Must be at least 8 characters"
+    ErrorMessage="Username must be at least 8 characters"
     ErrorColor="Orange"
     ErrorFontSize="11"
-    IsValid="{Binding IsPasswordValid}" />
+    IsValid="{Binding IsUsernameValid}" />
 ```
 
 ### Properties
@@ -184,7 +190,7 @@ An entry with a configurable border and inline error message. The border and sep
 
 ## StateButton
 
-A fully customisable tappable button built as a `ContentView`. Supports press animations, a busy/loading spinner, an optional vertical divider with a trailing icon, gradient backgrounds, and a visual disabled state.
+A customizable tappable button built as a `ContentView`. Supports press animations, a busy/loading spinner, an optional vertical divider in horizontal icon layouts, gradient backgrounds, and a visual disabled state.
 
 ### Basic usage
 
@@ -220,6 +226,8 @@ A fully customisable tappable button built as a `ContentView`. Supports press an
 
 ### Divider + trailing icon
 
+Add `icon_lock.svg` or `icon_lock.png` to your application's `Resources/Images` as a `MauiImage` before using this example. The sample application includes the icon.
+
 ```xml
 <cc:StateButton
     CornerRadius="22"
@@ -232,8 +240,7 @@ A fully customisable tappable button built as a `ContentView`. Supports press an
     TextColor="#3B82F6" />
 ```
 
-> **iOS & Mac Catalyst note:** reference rasterised images with `.png` extension (e.g. `icon_lock.png`), not `.svg`.
-> Alternatively use `FontImageSource` to avoid the bundle lookup entirely:
+> Add your icon to the application's `Resources/Images` as a `MauiImage`. Reference SVG assets using their generated `.png` filename (for example, `icon_lock.png`). The sample application includes this icon. Alternatively, use `FontImageSource` with a font and glyph available in your application:
 > ```xml
 > <cc:StateButton.ImageSource>
 >     <FontImageSource Glyph="&#x1F512;" Size="18" Color="#3B82F6" />
@@ -249,10 +256,18 @@ A fully customisable tappable button built as a `ContentView`. Supports press an
 SaveBtn.Command = new Command(async () =>
 {
     SaveBtn.IsBusy = true;
-    await DoWorkAsync();
-    SaveBtn.IsBusy = false;
+    try
+    {
+        await DoWorkAsync(); // Replace with your application operation.
+    }
+    finally
+    {
+        SaveBtn.IsBusy = false;
+    }
 });
 ```
+
+`IsBusy` blocks taps and preserves the button content's measured space while the loading indicator is shown. The application controls this state; commands do not set it automatically. In an MVVM application, bind `IsBusy` to a view model property.
 
 ### Command binding
 
@@ -262,6 +277,8 @@ SaveBtn.Command = new Command(async () =>
     Command="{Binding SubmitCommand}"
     CommandParameter="{Binding Item}" />
 ```
+
+Taps execute the command only when `CanExecute` returns true. To update the disabled appearance, bind `IsEnabled` to your application state as well; `StateButton` does not subscribe to `CanExecuteChanged`.
 
 ### Properties
 
@@ -282,5 +299,63 @@ SaveBtn.Command = new Command(async () =>
 | **AnimationType** | ButtonAnimationType | Scale | `Scale`, `Fade`, `None` |
 | **IsBusy** | bool | false | Shows an `ActivityIndicator` and hides content while true |
 | **IsEnabled** | bool | true | When false, blocks input and fades the button to 40 % opacity |
-| **Command** | ICommand | null | Executed after the press animation completes |
+| **Command** | ICommand | null | Executed on tap when enabled, not busy, and CanExecute returns true; scale/fade feedback returns to its resting state afterward |
 | **CommandParameter** | object | null | Parameter passed to `Command` |
+
+---
+
+## BulletGraph
+
+A compact KPI visualization built from MAUI views. Display a value against a minimum/maximum range, add an optional target marker, and use qualitative bands to provide performance context.
+
+Use the same `cc` namespace as the other controls; no additional package or registration is required for this implementation.
+
+```xml
+<cc:BulletGraph
+    Title="Monthly revenue"
+    Subtitle="Progress toward this month's target"
+    Minimum="0"
+    Maximum="100"
+    Value="72"
+    ValueText="72%"
+    Target="85"
+    PoorRangeEnd="40"
+    AverageRangeEnd="70"
+    GoodRangeEnd="100"
+    ShowAxisLabels="True"
+    FillColor="#512BD4" />
+```
+
+Bind `Value`, `ValueText`, and `Target` to view model properties for live data. `ValueText` is supplied separately from the numeric value, so your application controls units and formatting.
+
+### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| **Title** | string | empty | Header text |
+| **Subtitle** | string | empty | Supporting text below the header |
+| **Value** | double | 0 | Value represented by the fill bar |
+| **ValueText** | string | empty | Formatted text displayed beside the title |
+| **Minimum** | double | 0 | Start of the scale |
+| **Maximum** | double | 100 | End of the scale |
+| **Target** | double | NaN | Target position; NaN omits the marker |
+| **ShowTargetMarker** | bool | true | Whether to display a configured target |
+| **ShowAxisLabels** | bool | false | Whether to display scale labels |
+| **PoorRangeEnd** | double | NaN | Upper boundary of the first qualitative band |
+| **AverageRangeEnd** | double | NaN | Upper boundary of the second qualitative band |
+| **GoodRangeEnd** | double | NaN | Upper boundary of the third qualitative band |
+| **BarHeight** | double | 10 | Height of the bar in device-independent units |
+| **CornerRadius** | double | 5 | Radius of the track and value bar corners |
+| **FillColor** | Color | #7C3AED | Value bar and value text color |
+| **TrackColor** | Color | #EDE7F6 | Background color when qualitative bands are not configured |
+| **TargetColor** | Color | #1F2937 | Target marker color |
+
+Set `Maximum` greater than `Minimum`, and provide range boundaries in ascending order within the scale. Value and target positions are clamped to the scale. Qualitative band colors are fixed in this implementation; fill, track, and target colors are configurable.
+
+See the [bullet graph sample](https://github.com/ilija2407/maui-common-controls/blob/main/CommonControlsSample/BulletGraphSamplePage.xaml) for dashboard layouts.
+
+---
+
+## Contributing and license
+
+See the [contribution guide](https://github.com/ilija2407/maui-common-controls/blob/main/CONTRIBUTING.md) for bug reports, control proposals, and pull requests. CommonControls.Maui is licensed under the [MIT License](https://github.com/ilija2407/maui-common-controls/blob/main/LICENSE).
